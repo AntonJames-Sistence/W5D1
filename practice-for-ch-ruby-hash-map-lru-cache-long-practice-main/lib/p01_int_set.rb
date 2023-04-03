@@ -26,12 +26,18 @@ class IntSet
   end
 
   def insert(num)
+    bucket = num % 4 # or num_buckets
+    @store[bucket] << num
   end
 
   def remove(num)
+    #ask proper bucket to remove item
+    @store.each { |bucket| bucket.delete(num) if bucket.include?(num) }
   end
 
   def include?(num)
+    @store.each { |bucket| return true if bucket.include?(num) }
+    false
   end
 
   private
