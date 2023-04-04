@@ -4,6 +4,11 @@ end
 
 class Array
   def hash
+    hashed = []
+    self.each_with_index do |ele, idx|
+      hashed << (ele.to_i + idx).hash
+    end
+    hashed.sum
   end
 end
 
